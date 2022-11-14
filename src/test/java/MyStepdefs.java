@@ -24,22 +24,25 @@ public class MyStepdefs {
        dashBoardPage = new DashBoardPage(driver);
     }
 
-    @Given(": User navigates to the application")
-    public void userNavigatesToTheApplication () {
+    @Given("User navigates to the application")
+    public void userNavigatesToTheApplication () throws InterruptedException {
+        Thread.sleep(2000);
         String ExpectedTitle = driver.getTitle();
         String ActualTitle = "Admin | Login";
         Assert.assertEquals(ExpectedTitle, ActualTitle);
     }
-    @When(": User provides valid credential")
+
+    @When("User provides valid credential")
     public void userProvidesValidCredential () {
         loginPage.UserName.sendKeys("admin");
         loginPage.Password.sendKeys("admin");
     }
-    @And(": User clicks on Login button")
+    @And("User clicks on Login button")
     public void userClicksOnLoginButton () {
+
         loginPage.LoginButton.click();
     }
-    @Then(": User is navigated to the Dashboard")
+    @Then("User is navigated to the Dashboard")
     public void userIsNavigatedToTheDashboard () {
         String ExpectedTitleDB = driver.getTitle();
         String ActualTitleDB = "Admin | Dashboard";
@@ -53,16 +56,19 @@ public class MyStepdefs {
    }
     @When("User clicks on the toggle button on the top")
     public void userClicksOnTheToggleButtonOnTheTop(){
-            dashBoardPage.ToggleButton.click();
+
+        dashBoardPage.ToggleButton.click();
    }
     @Then("Menu panel should open")
     public void menuPanelShouldOpen() {
+
         Assert.assertTrue(dashBoardPage.MainMenu.isDisplayed());
     }
 
 
     @When("Users clicks on Order Management")
     public void usersClicksOnOrderManagement() {
+
         dashBoardPage.OrderMgmtLink.click();
     }
 
@@ -73,6 +79,7 @@ public class MyStepdefs {
 
     @When("User Clicks on Orders link")
     public void userClicksOnOrdersLink() {
+
         dashBoardPage.OrderList.click();
     }
 
@@ -86,11 +93,13 @@ public class MyStepdefs {
 
     @When("User clicks on Logged in User name")
     public void userClicksOnLoggedInUserName() {
+
         dashBoardPage.Administrator.click();
     }
 
     @And("User clicks on Setting Button")
     public void userClicksOnSettingButton() {
+
         dashBoardPage.Setting.click();
     }
 
@@ -104,6 +113,7 @@ public class MyStepdefs {
 
     @And("User clicks on Logout button")
     public void userClicksOnLogoutButton() {
+
         dashBoardPage.Logout.click();
     }
 
@@ -128,4 +138,16 @@ public class MyStepdefs {
         System.out.println(loginPage.InvalidCredMessage);
     }
 
+    @When("User Clicks on Cancelation Reasons link")
+    public void userClicksOnCancelationReasonsLink() {
+
+        orderManagementPage.CancelReasonLink.click();
+    }
+
+    @Then("Cancelation Reasons List screen should open")
+    public void cancelationReasonsListScreenShouldOpen() {
+        String ExpectCancelReasonTitle = "Admin | Cancelation Reasons";
+        String ActCancelReasonTitle = driver.getTitle();
+        Assert.assertEquals(ExpectCancelReasonTitle, ActCancelReasonTitle);
+    }
 }

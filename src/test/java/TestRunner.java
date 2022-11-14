@@ -12,7 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/destination.html"}
+        features={"src/test/resources/AppFeature"},
+        glue ={"MyStepdefs"},
+        tags="@CancelationReason",
+        plugin={"pretty", "html:target/destination.html"}
 )
 
 public class TestRunner {

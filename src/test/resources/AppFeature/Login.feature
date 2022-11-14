@@ -1,10 +1,10 @@
 Feature: Validating login functionality
-
+@Login
   Scenario: Login to KareHealth with valid credentials
-    Given : User navigates to the application
-    When : User provides valid credential
-    And : User clicks on Login button
-    Then : User is navigated to the Dashboard
+    Given User navigates to the application
+    When User provides valid credential
+    And User clicks on Login button
+    Then User is navigated to the Dashboard
 
   Scenario: Opening Menu panel of KareHealth
     Given User is logged in with valid Credentials
